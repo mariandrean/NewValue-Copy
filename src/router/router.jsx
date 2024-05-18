@@ -22,6 +22,10 @@ const router = createBrowserRouter([
                 loader: getAllNews
             },
             {
+                path: "/login",
+                element: <Login />,
+            },
+            {
                 path: "/news/:id",
                 element: <NewsDetails />,
                 loader: ({params}) => getNewsById(params.id)
@@ -29,8 +33,19 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: "/login",
-        element: <Login />,
+        path: "/dashboard",
+        element: 
+        <>
+        <Login />
+        <Outlet />
+        </>
+        ,
+        children: [
+            {
+                path: "/dashboard/register",
+                element: <Register />
+            }
+        ]
     }
 ]);
 
