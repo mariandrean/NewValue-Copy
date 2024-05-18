@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Outlet, createBrowserRouter } from 'react-router-dom';
 import LayoutPublic from '../layout/LayoutPublic.jsx';
 import Home from '../pages/Home.jsx';
 import Login from '../pages/Login.jsx';
@@ -13,17 +13,13 @@ import ErrorBoundary from '../components/ErrorBoundary.jsx';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <LayoutPublic />,
+        element: <Outlet />,
         errorElement: <ErrorBoundary />,
         children: [
             {
                 index: true,
                 element: <Home />,
                 loader: getAllNews
-            },
-            {
-                path: "/login",
-                element: <Login />,
             },
             {
                 path: "/news/:id",
@@ -33,28 +29,8 @@ const router = createBrowserRouter([
         ],
     },
     {
-        path: "/dashboard",
-        element: <LayoutPrivate />,
-        children: [
-            {
-                index: true,
-                element: <Dashboard />,
-                loader: getAllNews
-            },
-            {
-                path: "/dashboard/register",
-                element: <Register />
-            },
-            {
-                path: "/dashboard/create",
-                element: <NewsForm method="create" />,
-            },
-            {
-                path: "/dashboard/update/:id",
-                element: <NewsForm method="update" />,
-                loader: ({params}) => getNewsById(params.id)
-            },
-        ]
+        path: "/login",
+        element: <Login />
     }
 ]);
 
