@@ -5,6 +5,7 @@ import Login from '../pages/Login.jsx';
 import NewsDetails from '../pages/NewsDetails.jsx'
 import LayoutPrivate from '../layout/LayoutPrivate.jsx';
 import Register from '../pages/Register.jsx';
+import NewsForm from '../pages/NewsForm.jsx';
 import Dashboard from '../pages/Dashboard.jsx';
 import { getAllNews, getNewsById } from '../services/newsServices.js';
 import ErrorBoundary from '../components/ErrorBoundary.jsx';
@@ -43,7 +44,16 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/register",
                 element: <Register />
-            }
+            },
+            {
+                path: "/dashboard/create",
+                element: <NewsForm method="create" />,
+            },
+            {
+                path: "/dashboard/update/:id",
+                element: <NewsForm method="update" />,
+                loader: ({params}) => getNewsById(params.id)
+            },
         ]
     }
 ]);
