@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Outlet, createBrowserRouter } from 'react-router-dom';
 import LayoutPublic from '../layout/LayoutPublic.jsx';
 import Home from '../pages/Home.jsx';
 import Login from '../pages/Login.jsx';
