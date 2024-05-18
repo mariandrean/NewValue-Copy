@@ -1,4 +1,4 @@
-import { Outlet, createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from 'react-router-dom';
 import LayoutPublic from '../layout/LayoutPublic.jsx';
 import Home from '../pages/Home.jsx';
 import Login from '../pages/Login.jsx';
@@ -13,7 +13,7 @@ import ErrorBoundary from '../components/ErrorBoundary.jsx';
 const router = createBrowserRouter([
     {
         path: '/',
-        element: <Outlet />,
+        element: <LayoutPublic />,
         errorElement: <ErrorBoundary />,
         children: [
             {
@@ -30,7 +30,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <Login />
+        element: <Login />,
     }
 ]);
 
